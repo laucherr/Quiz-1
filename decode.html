@@ -67,7 +67,9 @@
     <h1> PROJECT 1</h1>
     <p class="lead">Encryption and Decryption.</p>
     <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">DECRYPT</a>
+      <button onclick="decrypt()" class="btn btn-lg btn-secondary fw-bold border-white bg-white">DECRYPT</button>
+        <input type="text" name="" id="decrypt">
+        <input type="text" name="" id="decrypts" disabled>
     </p>
   </main>
 
@@ -76,7 +78,38 @@
   </footer>
 </div>
 
+<script>
+ function decrypt(){
 
+var dec = document.getElementById("decrypt").value;
+const caesarDecoded = (s, n) => {
+	let alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789'
+	let lc = alphabet.replace(/\s/g, '').toLowerCase().split('')
+	let uc = alphabet.replace(/\s/g, '').toUpperCase().split('')
+
+	return Array.from(s)
+		.map((v) => {
+			if (lc.indexOf(v.toLowerCase()) === -1 || uc.indexOf(v.toUpperCase()) === -1) {
+				return v
+			}
+
+			let lcEncryptIndex = (lc.indexOf(v.toLowerCase()) - n) % alphabet.length
+			lcEncryptIndex = lcEncryptIndex < 0 ? lcEncryptIndex + alphabet.length : lcEncryptIndex
+			const lcEncryptedChar = lc[lcEncryptIndex]
+
+			let ucEncryptIndex = (uc.indexOf(v.toUpperCase()) - n) % alphabet.length
+			ucEncryptIndex = ucEncryptIndex < 0 ? ucEncryptIndex + alphabet.length : ucEncryptIndex
+			const ucEncryptedChar = uc[ucEncryptIndex]
+
+			return lc.indexOf(v) !== -1 ? lcEncryptedChar : ucEncryptedChar
+		})
+		.join('')
+}
+
+document.getElementById("decrypts").value = caesarDecoded(dec, 2);
+ }
+
+</script>
     
   </body>
 </html>
