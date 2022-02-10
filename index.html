@@ -6,9 +6,95 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document</title>
 </head>
+
 <body>
+      <a href="decode.html">Devcode</a>
+
+     
+
       <script>
-            
+            // Javascript program to split an alphanumeric
+            // string using stringbuffer   
+            let alpha = "";
+            let num = "";
+            let special = "";
+
+                // Driver method
+            let str = "*abc12c3$%";
+            splitString(str);
+
+
+    function splitString(str)
+    {
+        
+        for (let i=0; i<str.length; i++)
+        {
+            if (!isNaN(String(str[i]) * 1))
+                num+=str[i];
+            else if((str[i] >= 'A' && str[i] <= 'Z') ||
+             (str[i] >= 'a' && str[i] <= 'z'))
+                alpha+=str[i];
+            else
+                special+=str[i];
+        }
+
+        
+    }
+     
+
+     
+    // This code is contributed by avanitrachhadiya2155
+      const caesarEncoded = (s, n) => {
+	let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+	let lc = alphabet.replace(/\s/g, '').toLowerCase().split('')
+	let uc = alphabet.replace(/\s/g, '').toUpperCase().split('')
+     
+	return Array.from(s)
+		.map((v) => {
+			if (lc.indexOf(v.toLowerCase()) === -1 || uc.indexOf(v.toUpperCase()) === -1) {
+				return v
+			}
+
+			const lcEncryptIndex = (lc.indexOf(v.toLowerCase()) + n) % alphabet.length
+			const lcEncryptedChar = lc[lcEncryptIndex]
+
+			const ucEncryptIndex = (uc.indexOf(v.toUpperCase()) + n) % alphabet.length
+			const ucEncryptedChar = uc[ucEncryptIndex]
+
+			return lc.indexOf(v) !== -1 ? lcEncryptedChar : ucEncryptedChar
+		})
+		.join('')
+}
+
+
+const numbers = (s, n) => {
+	let alphabet = '0123456789'
+	let lc = alphabet.replace(/\s/g, '').toLowerCase().split('')
+	let uc = alphabet.replace(/\s/g, '').toUpperCase().split('')
+     
+	return Array.from(s)
+		.map((v) => {
+			if (lc.indexOf(v.toLowerCase()) === -1 || uc.indexOf(v.toUpperCase()) === -1) {
+				return v
+			}
+
+			const lcEncryptIndex = (lc.indexOf(v.toLowerCase()) + n) % alphabet.length
+			const lcEncryptedChar = lc[lcEncryptIndex]
+
+			const ucEncryptIndex = (uc.indexOf(v.toUpperCase()) + n) % alphabet.length
+			const ucEncryptedChar = uc[ucEncryptIndex]
+
+			return lc.indexOf(v) !== -1 ? lcEncryptedChar : ucEncryptedChar
+		})
+		.join('')
+}
+
+
+            document.write(caesarEncoded(alpha, 2));
+            document.write(numbers(num, 2));
+                          
+
+
       </script>
 </body>
 </html>
