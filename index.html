@@ -1,4 +1,6 @@
-<!doctype html>
+
+<!DOCTYPE html>
+
 <html lang="en" class="h-100">
   <head>
     <meta charset="utf-8">
@@ -57,7 +59,7 @@
     <div>
       <h3 class="float-md-start mb-0">Decryption and Encryption tool</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link" active" aria-current="page" href="#">Encrypt</a>
+        <a class="nav-link" active" aria-current="page" href="index.html">Encrypt</a>
         <a class="nav-link" href="decode.html">Decrypt</a>
       </nav>
     </div>
@@ -67,7 +69,10 @@
     <h1> PROJECT 1</h1>
     <p class="lead">Encryption and Decryption.</p>
     <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">ENCRYPT</a>
+          <input type="text" name="Encrypt" id="encrypt">
+   
+      <button class="btn btn-lg btn-secondary fw-bold border-white bg-white" id = "btnencrypt" onclick="run()">ENCRYPT</button>
+      <input type="text" name="" id="checkresult">
     </p>
   </main>
 
@@ -78,5 +83,92 @@
 
 
     
-  </body>
+<script>
+  function run(){
+            // Javascript program to split an alphanumeric
+      // string using stringbuffer   
+      let alpha = "";
+      let num = "";
+      let special = "";
+
+          // Driver method
+      let str = document.getElementById("encrypt");
+      splitString(str);
+
+
+function splitString(str)
+{
+  
+  for (let i=0; i<str.length; i++)
+  {
+      if (!isNaN(String(str[i]) * 1))
+          num+=str[i];
+      else if((str[i] >= 'A' && str[i] <= 'Z') ||
+       (str[i] >= 'a' && str[i] <= 'z'))
+          alpha+=str[i];
+      else
+          special+=str[i];
+  }
+
+  
+}
+
+
+
+// This code is contributed by avanitrachhadiya2155
+const caesarEncoded = (s, n) => {
+let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+let lc = alphabet.replace(/\s/g, '').toLowerCase().split('')
+let uc = alphabet.replace(/\s/g, '').toUpperCase().split('')
+
+return Array.from(s)
+      .map((v) => {
+            if (lc.indexOf(v.toLowerCase()) === -1 || uc.indexOf(v.toUpperCase()) === -1) {
+                  return v
+            }
+
+            const lcEncryptIndex = (lc.indexOf(v.toLowerCase()) + n) % alphabet.length
+            const lcEncryptedChar = lc[lcEncryptIndex]
+
+            const ucEncryptIndex = (uc.indexOf(v.toUpperCase()) + n) % alphabet.length
+            const ucEncryptedChar = uc[ucEncryptIndex]
+
+            return lc.indexOf(v) !== -1 ? lcEncryptedChar : ucEncryptedChar
+      })
+      .join('')
+}
+
+
+const numbers = (s, n) => {
+let alphabet = '0123456789'
+let lc = alphabet.replace(/\s/g, '').toLowerCase().split('')
+let uc = alphabet.replace(/\s/g, '').toUpperCase().split('')
+
+return Array.from(s)
+      .map((v) => {
+            if (lc.indexOf(v.toLowerCase()) === -1 || uc.indexOf(v.toUpperCase()) === -1) {
+                  return v
+            }
+
+            const lcEncryptIndex = (lc.indexOf(v.toLowerCase()) + n) % alphabet.length
+            const lcEncryptedChar = lc[lcEncryptIndex]
+
+            const ucEncryptIndex = (uc.indexOf(v.toUpperCase()) + n) % alphabet.length
+            const ucEncryptedChar = uc[ucEncryptIndex]
+
+            return lc.indexOf(v) !== -1 ? lcEncryptedChar : ucEncryptedChar
+      })
+      .join('')
+}
+
+
+      document.getElementById("checkresult").value = caesarEncoded(alpha, 2);
+      document.write(numbers(num, 2));
+  }
+                    
+
+
+</script>
+</body>
 </html>
+
