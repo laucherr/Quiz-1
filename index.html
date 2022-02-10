@@ -1,100 +1,155 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
-</head>
 
-<body>
-      <a href="decode.html">Devcode</a>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Cover Template · Bootstrap v5.0</title>
 
-     
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
 
-      <script>
-            // Javascript program to split an alphanumeric
-            // string using stringbuffer   
-            let alpha = "";
-            let num = "";
-            let special = "";
+    
 
-                // Driver method
-            let str = "*abc12c3$%";
-            splitString(str);
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
 
-    function splitString(str)
-    {
-        
-        for (let i=0; i<str.length; i++)
-        {
-            if (!isNaN(String(str[i]) * 1))
-                num+=str[i];
-            else if((str[i] >= 'A' && str[i] <= 'Z') ||
-             (str[i] >= 'a' && str[i] <= 'z'))
-                alpha+=str[i];
-            else
-                special+=str[i];
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
         }
+      }
+    </style>
 
-        
-    }
-     
+    
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">Cover</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-     
-    // This code is contributed by avanitrachhadiya2155
-      const caesarEncoded = (s, n) => {
-	let alphabet = 'abcdefghijklmnopqrstuvwxyz'
-	let lc = alphabet.replace(/\s/g, '').toLowerCase().split('')
-	let uc = alphabet.replace(/\s/g, '').toUpperCase().split('')
-     
-	return Array.from(s)
-		.map((v) => {
-			if (lc.indexOf(v.toLowerCase()) === -1 || uc.indexOf(v.toUpperCase()) === -1) {
-				return v
-			}
+  <main class="px-3">
+    <h1>Cover your page.</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <p class="lead">
+      <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+    </p>
+  </main>
 
-			const lcEncryptIndex = (lc.indexOf(v.toLowerCase()) + n) % alphabet.length
-			const lcEncryptedChar = lc[lcEncryptIndex]
+  <footer class="mt-auto text-white-50">
+    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+  </footer>
+</div>
 
-			const ucEncryptIndex = (uc.indexOf(v.toUpperCase()) + n) % alphabet.length
-			const ucEncryptedChar = uc[ucEncryptIndex]
 
-			return lc.indexOf(v) !== -1 ? lcEncryptedChar : ucEncryptedChar
-		})
-		.join('')
+    
+<script>
+      // Javascript program to split an alphanumeric
+      // string using stringbuffer   
+      let alpha = "";
+      let num = "";
+      let special = "";
+
+          // Driver method
+      let str = "*abc12c3$%";
+      splitString(str);
+
+
+function splitString(str)
+{
+  
+  for (let i=0; i<str.length; i++)
+  {
+      if (!isNaN(String(str[i]) * 1))
+          num+=str[i];
+      else if((str[i] >= 'A' && str[i] <= 'Z') ||
+       (str[i] >= 'a' && str[i] <= 'z'))
+          alpha+=str[i];
+      else
+          special+=str[i];
+  }
+
+  
+}
+
+
+
+// This code is contributed by avanitrachhadiya2155
+const caesarEncoded = (s, n) => {
+let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+let lc = alphabet.replace(/\s/g, '').toLowerCase().split('')
+let uc = alphabet.replace(/\s/g, '').toUpperCase().split('')
+
+return Array.from(s)
+      .map((v) => {
+            if (lc.indexOf(v.toLowerCase()) === -1 || uc.indexOf(v.toUpperCase()) === -1) {
+                  return v
+            }
+
+            const lcEncryptIndex = (lc.indexOf(v.toLowerCase()) + n) % alphabet.length
+            const lcEncryptedChar = lc[lcEncryptIndex]
+
+            const ucEncryptIndex = (uc.indexOf(v.toUpperCase()) + n) % alphabet.length
+            const ucEncryptedChar = uc[ucEncryptIndex]
+
+            return lc.indexOf(v) !== -1 ? lcEncryptedChar : ucEncryptedChar
+      })
+      .join('')
 }
 
 
 const numbers = (s, n) => {
-	let alphabet = '0123456789'
-	let lc = alphabet.replace(/\s/g, '').toLowerCase().split('')
-	let uc = alphabet.replace(/\s/g, '').toUpperCase().split('')
-     
-	return Array.from(s)
-		.map((v) => {
-			if (lc.indexOf(v.toLowerCase()) === -1 || uc.indexOf(v.toUpperCase()) === -1) {
-				return v
-			}
+let alphabet = '0123456789'
+let lc = alphabet.replace(/\s/g, '').toLowerCase().split('')
+let uc = alphabet.replace(/\s/g, '').toUpperCase().split('')
 
-			const lcEncryptIndex = (lc.indexOf(v.toLowerCase()) + n) % alphabet.length
-			const lcEncryptedChar = lc[lcEncryptIndex]
+return Array.from(s)
+      .map((v) => {
+            if (lc.indexOf(v.toLowerCase()) === -1 || uc.indexOf(v.toUpperCase()) === -1) {
+                  return v
+            }
 
-			const ucEncryptIndex = (uc.indexOf(v.toUpperCase()) + n) % alphabet.length
-			const ucEncryptedChar = uc[ucEncryptIndex]
+            const lcEncryptIndex = (lc.indexOf(v.toLowerCase()) + n) % alphabet.length
+            const lcEncryptedChar = lc[lcEncryptIndex]
 
-			return lc.indexOf(v) !== -1 ? lcEncryptedChar : ucEncryptedChar
-		})
-		.join('')
+            const ucEncryptIndex = (uc.indexOf(v.toUpperCase()) + n) % alphabet.length
+            const ucEncryptedChar = uc[ucEncryptIndex]
+
+            return lc.indexOf(v) !== -1 ? lcEncryptedChar : ucEncryptedChar
+      })
+      .join('')
 }
 
 
-            document.write(caesarEncoded(alpha, 2));
-            document.write(numbers(num, 2));
-                          
+      document.write(caesarEncoded(alpha, 2));
+      document.write(numbers(num, 2));
+                    
 
 
-      </script>
+</script>
 </body>
 </html>
+
