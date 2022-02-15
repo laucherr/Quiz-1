@@ -9,29 +9,21 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
     <title>Cover Template · Bootstrap v5.0</title>
-
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-    
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
-<meta name="theme-color" content="#7952b3">
-
-
+    <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#7952b3">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -40,15 +32,12 @@
         -moz-user-select: none;
         user-select: none;
       }
-
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
       }
     </style>
-
-    
     <!-- Custom styles for this template -->
     <link href="cover.css" rel="stylesheet">
   </head>
@@ -70,9 +59,9 @@
     <p class="lead">Encryption and Decryption.</p>
     <p class="lead">
           <input type="text" name="Encrypt" id="encrypt">
-   
-      <button class="btn btn-lg btn-secondary fw-bold border-white bg-white" id = "btnencrypt" onclick="run()">ENCRYPT</button>
-      <input type="text" name="" id="checkresult">
+          <input type="text" name="" id="encrypts" placeholder="Results" disabled>
+      <button class="btn btn-lg btn-secondary fw-bold border-white bg-white" id = "btnencrypt" onclick="encrypt()">ENCRYPT</button>
+      
     </p>
   </main>
 
@@ -84,86 +73,30 @@
 
     
 <script>
-  function run(){
-            // Javascript program to split an alphanumeric
-      // string using stringbuffer   
-      let alpha = "";
-      let num = "";
-      let special = "";
+  function encrypt(){
+    var enc = document.getElementById("encrypt").value;
+    const numbers = (s, n) => {
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789'
+    let lc = alphabet.replace(/\s/g, '').toLowerCase().split('')
+    let uc = alphabet.replace(/\s/g, '').toUpperCase().split('')
 
-          // Driver method
-      let str = document.getElementById("encrypt");
-      splitString(str);
+    return Array.from(s)
+          .map((v) => {
+                if (lc.indexOf(v.toLowerCase()) === -1 || uc.indexOf(v.toUpperCase()) === -1) {
+                      return v
+                }
 
+                const lcEncryptIndex = (lc.indexOf(v.toLowerCase()) + n) % alphabet.length
+                const lcEncryptedChar = lc[lcEncryptIndex]
 
-function splitString(str)
-{
-  
-  for (let i=0; i<str.length; i++)
-  {
-      if (!isNaN(String(str[i]) * 1))
-          num+=str[i];
-      else if((str[i] >= 'A' && str[i] <= 'Z') ||
-       (str[i] >= 'a' && str[i] <= 'z'))
-          alpha+=str[i];
-      else
-          special+=str[i];
-  }
+                const ucEncryptIndex = (uc.indexOf(v.toUpperCase()) + n) % alphabet.length
+                const ucEncryptedChar = uc[ucEncryptIndex]
 
-  
-}
-
-
-
-// This code is contributed by avanitrachhadiya2155
-const caesarEncoded = (s, n) => {
-let alphabet = 'abcdefghijklmnopqrstuvwxyz'
-let lc = alphabet.replace(/\s/g, '').toLowerCase().split('')
-let uc = alphabet.replace(/\s/g, '').toUpperCase().split('')
-
-return Array.from(s)
-      .map((v) => {
-            if (lc.indexOf(v.toLowerCase()) === -1 || uc.indexOf(v.toUpperCase()) === -1) {
-                  return v
-            }
-
-            const lcEncryptIndex = (lc.indexOf(v.toLowerCase()) + n) % alphabet.length
-            const lcEncryptedChar = lc[lcEncryptIndex]
-
-            const ucEncryptIndex = (uc.indexOf(v.toUpperCase()) + n) % alphabet.length
-            const ucEncryptedChar = uc[ucEncryptIndex]
-
-            return lc.indexOf(v) !== -1 ? lcEncryptedChar : ucEncryptedChar
-      })
-      .join('')
-}
-
-
-const numbers = (s, n) => {
-let alphabet = '0123456789'
-let lc = alphabet.replace(/\s/g, '').toLowerCase().split('')
-let uc = alphabet.replace(/\s/g, '').toUpperCase().split('')
-
-return Array.from(s)
-      .map((v) => {
-            if (lc.indexOf(v.toLowerCase()) === -1 || uc.indexOf(v.toUpperCase()) === -1) {
-                  return v
-            }
-
-            const lcEncryptIndex = (lc.indexOf(v.toLowerCase()) + n) % alphabet.length
-            const lcEncryptedChar = lc[lcEncryptIndex]
-
-            const ucEncryptIndex = (uc.indexOf(v.toUpperCase()) + n) % alphabet.length
-            const ucEncryptedChar = uc[ucEncryptIndex]
-
-            return lc.indexOf(v) !== -1 ? lcEncryptedChar : ucEncryptedChar
-      })
-      .join('')
-}
-
-
-      document.getElementById("checkresult").value = caesarEncoded(alpha, 2);
-      document.write(numbers(num, 2));
+                return lc.indexOf(v) !== -1 ? lcEncryptedChar : ucEncryptedChar
+          })
+          .join('')
+    }
+    document.getElementById("encrypts").value = numbers(enc, 2);
   }
                     
 
